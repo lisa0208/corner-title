@@ -1,0 +1,517 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://e.sinajs.cn/p/styles/jquery-ui-1.9.1.css" />
+    <link rel="stylesheet" href="http://e.sinajs.cn/bp/css/admin.css" />
+    <link rel="stylesheet" href="http://e.sinajs.cn/mcpm/css/pages/admin/order/index.css">
+    <title>CPD运营管理系统</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header clearfix">
+        <div class="logo">
+            <a href="/admin/"><img src="http://e.sinajs.cn/bp/images/admin_logo.png" alt="CPD运营管理系统"> </a>
+        </div>
+        <ul class="nav nav-top clearfix">
+            <!--<li>今日投放计划<em class="green">0</em></li>-->
+            <li class="first">【微博】刘莎</li>
+            <li><a style="color: #0F548D" href="http://weibo.com/logout.php?backurl=%2F">退出系统</a></li>
+        </ul>
+    </div>
+    <ul class="nav nav-main clearfix">
+        <li><a href="/admin/">首页</a></li>
+        <li class="active"><a href="/admin/campaign/index.html">CPD广告管理</a></li>
+    </ul>
+    <ul class="nav nav-sub clearfix">
+        <li class="active"><a href="/admin/campaign/index.html">广告计划管理</a><span class="arrow"></span></li>
+        <li><a href="/admin/contract/index.html">广告合同管理</a><span class="arrow"></span></li>
+        <!--<li><a href="/admin/template/index.html">广告模板管理</a><span class="arrow"></span></li>-->
+        <li><a href="/admin/log/index.html">广告日志查询</a><span class="arrow"></span></li>
+    </ul>
+    <div class="main">
+        <form method="get" action="/admin/campaign/search.html" target="_self" id="search_form">
+            <fieldset>
+                <legend>查询</legend>
+                <table>
+                    <tr>
+                        <th>计划ID：</th>
+                        <td><input class="ui-text w1" type="text" name="campaign_id" value="" /></td>
+                        <!--<th>计划名称：</th>-->
+                        <!--<td><input class="ui-text w1" type="text" name="campaign_name" value="" /></td>-->
+                        <th>客户ID：</th>
+                        <td><input class="ui-text w1" type="text" name="customer_id" value="" /></td>
+                        <th>客户昵称：</th>
+                        <td><input class="ui-text w1" type="text" name="customer_name" value="" /></td>
+                    </tr>
+                    <tr>
+                        <th>合同号：</th>
+                        <td><input class="ui-text w1" type="text" name="contract_no" value="" /></td>
+                        <th>广告位置：</th>
+                        <td>
+                            <select name="pdps" class="w1">
+                                                                <option value="" selected="selected" >--选择位置--</option>
+                                                                                                        <option value="PDPS000000051603"  >微博首页-推荐话题</option>
+                                                                        <option value="PDPS000000053572"  >微博首页-热门话题榜</option>
+                                                                        <option value="PDPS000000049719"  >客户端-推荐话题</option>
+                                                                        <option value="PDPS000000053573"  >客户端-热门话题榜</option>
+                                                                        <option value="PDPS000000055252"  >微博首页-分省市话题</option>
+                                                                        <option value="PDPS000000057478"  >微博首页-推荐话题-新</option>
+                                                                        <option value="PDPS000000057401"  >微博首页-热门话题榜-新</option>
+                                                                        <option value="PDPS000000057400"  >客户端-推荐话题-新</option>
+                                                                        <option value="PDPS000000057402"  >客户端-热门话题榜-新</option>
+                                                                                                </select>
+                        </td>
+                        <th>计划状态：</th>
+                        <td>
+                            <select name="status" class="w1">
+                                                                <option value="" selected="selected" >--选择状态--</option>
+                                <option value="1"  >待投</option>
+                                <option value="2"  >在投</option>
+                                <option value="3"  >暂停</option>
+                                <option value="4"  >终止</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input class="btn btn-7" type="submit" value="查询" onclick="javascript:justquery();" />
+                            <input class="btn btn-7" type="button" value="清空" onclick="window.location.href='/admin/campaign/index.html'" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        <div class="list">
+            <table>
+                <thead>
+                    <th width="50">计划ID</th>
+                    <th>合同号</th>
+                    <!--<th>合同名称</th>-->
+                    <th>计划名称</th>
+                    <th width="120">广告位置</th>
+                    <th>推广内容</th>
+                    <th>客户ID</th>
+                    <th>客户昵称</th>
+                    <th width="120">开始时间</th>
+                    <th width="120">结束时间</th>
+                    <th>今日曝光量</th>
+                    <th class="status" width="60">计划状态</th>
+                    <!--<th>创建时间</th>-->
+                    <!--<th>更新时间</th>-->
+                    <th width="160">操作</th>
+                </thead>
+                <tbody>
+                                                            <tr>
+                            <td align="center">3006</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB16121019">WB16121019</a></td>
+                            <!--<td align="center">F-PACE sustain campaign 2017 话题</td>-->
+                            <td align="center">华东门户-捷豹-0310-客户端话题榜</td>
+                            <td align="center">客户端-热门话题榜-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808ffdcf514c6422a08e0b502c4c5e51eba" target="_blank">挑战不可能2017</a></td>
+                            <td align="center">1798775760</td>
+                            <td align="center">捷豹中国Jaguar</td>
+                            <td align="center">2017-03-10 10:00:01</td>
+                            <td align="center">2017-03-11 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">待投</td>
+                            <!--<td align="center">2017-03-09 15:49:11</td>-->
+                            <!--<td align="center">2017-03-09 15:49:11</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3006">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3006">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=3006">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3006';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3006">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3005</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB16121019">WB16121019</a></td>
+                            <!--<td align="center">F-PACE sustain campaign 2017 话题</td>-->
+                            <td align="center">华东门户-捷豹-0310-首页话题榜</td>
+                            <td align="center">微博首页-热门话题榜-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808ffdcf514c6422a08e0b502c4c5e51eba" target="_blank">挑战不可能2017</a></td>
+                            <td align="center">1798775760</td>
+                            <td align="center">捷豹中国Jaguar</td>
+                            <td align="center">2017-03-10 10:00:01</td>
+                            <td align="center">2017-03-11 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">待投</td>
+                            <!--<td align="center">2017-03-09 15:47:52</td>-->
+                            <!--<td align="center">2017-03-09 15:47:52</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3005">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3005">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=3005">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3005';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3005">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3004</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB16121019">WB16121019</a></td>
+                            <!--<td align="center">F-PACE sustain campaign 2017 话题</td>-->
+                            <td align="center">华东门户-捷豹-0310-推荐话题</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808ffdcf514c6422a08e0b502c4c5e51eba" target="_blank">挑战不可能2017</a></td>
+                            <td align="center">1798775760</td>
+                            <td align="center">捷豹中国Jaguar</td>
+                            <td align="center">2017-03-10 10:00:01</td>
+                            <td align="center">2017-03-11 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">待投</td>
+                            <!--<td align="center">2017-03-09 15:45:39</td>-->
+                            <!--<td align="center">2017-03-09 15:45:39</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3004">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3004">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=3004">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3004';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3004">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3003</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17020589">WB17020589</a></td>
+                            <!--<td align="center">品众-欧印微博投放推广-3月</td>-->
+                            <td align="center">有货0313</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808b7ab48f8a352fecf759e30ed18c804a7" target="_blank">潮向吴亦凡</a></td>
+                            <td align="center">1733671614</td>
+                            <td align="center">YOHOBUY有货</td>
+                            <td align="center">2017-03-13 10:00:01</td>
+                            <td align="center">2017-03-14 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">待投</td>
+                            <!--<td align="center">2017-03-08 18:49:46</td>-->
+                            <!--<td align="center">2017-03-08 18:49:46</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3003">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3003">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=3003">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3003';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3003">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3002</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=SHH17030005">SHH17030005</a></td>
+                            <!--<td align="center">上海站华谊新星盛典开机报头和微博话题地域定向及品速（硬广 非标）</td>-->
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center"><a href="http://weibo.com/p/1008080733f3f7da0055c0bde2bbdf65a570b0" target="_blank">新星盛典</a></td>
+                            <td align="center">2036036774</td>
+                            <td align="center">华谊兄弟时尚</td>
+                            <td align="center">2017-03-09 10:00:01</td>
+                            <td align="center">2017-03-10 09:59:59</td>
+                            <td align="center">34,100</td>
+                            <td align="center">在投</td>
+                            <!--<td align="center">2017-03-08 17:21:51</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3002">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3002">修改</a>
+                                |
+                                                                                                                                    <a href="/admin/campaign/pause.html?campaign_id=3002">暂停</a>
+                                    |
+                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3002';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3002">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3001</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17020498">WB17020498</a></td>
+                            <!--<td align="center">小桔——17年3月滴滴娱乐-网剧好好先森</td>-->
+                            <td align="center">RP-好好先森-0309-推荐话题</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808e95b6150d31df57e2c633e9ab84cda14" target="_blank">好好先森</a></td>
+                            <td align="center">2800902855</td>
+                            <td align="center">熊孩子好妈妈</td>
+                            <td align="center">2017-03-09 10:00:01</td>
+                            <td align="center">2017-03-17 09:59:59</td>
+                            <td align="center">1,891,781</td>
+                            <td align="center">在投</td>
+                            <!--<td align="center">2017-03-08 12:04:00</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3001">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3001">修改</a>
+                                |
+                                                                                                                                    <a href="/admin/campaign/pause.html?campaign_id=3001">暂停</a>
+                                    |
+                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3001';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3001">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">3000</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17030262">WB17030262</a></td>
+                            <!--<td align="center">成都微动力-六零加-区域产品综合投放-3.8-3.9</td>-->
+                            <td align="center">六零加0309</td>
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center"><a href="http://weibo.com/p/10080862d6bd3ac22ade33619a0efc860a0e9c" target="_blank">我是如何变懒的</a></td>
+                            <td align="center">6161132025</td>
+                            <td align="center">Nidone智慧社区</td>
+                            <td align="center">2017-03-09 10:00:01</td>
+                            <td align="center">2017-03-10 09:59:59</td>
+                            <td align="center">406,707</td>
+                            <td align="center">在投</td>
+                            <!--<td align="center">2017-03-07 19:38:56</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=3000">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=3000">修改</a>
+                                |
+                                                                                                                                    <a href="/admin/campaign/pause.html?campaign_id=3000">暂停</a>
+                                    |
+                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=3000';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=3000">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2999</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17030178">WB17030178</a></td>
+                            <!--<td align="center">KFC 2017年 3月 女生节 微博标准合同</td>-->
+                            <td align="center">KFC308</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/1008082bd918892da45bb6b1be6c65785a7911" target="_blank">致敬诗意女人</a></td>
+                            <td align="center">1687422352</td>
+                            <td align="center">肯德基</td>
+                            <td align="center">2017-03-08 10:00:01</td>
+                            <td align="center">2017-03-09 09:59:59</td>
+                            <td align="center">476,624</td>
+                            <td align="center">终止</td>
+                            <!--<td align="center">2017-03-07 17:03:03</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2999">查看</a>
+                                |
+                                                                                                                                                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2999">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2998</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=LN17020009">LN17020009</a></td>
+                            <!--<td align="center">辽宁站-国美电器3月合同（总部微博资源）</td>-->
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center"><a href="http://weibo.com/p/100808353ee9a8196aa1e4ebf7e1af315e33df" target="_blank">老板出差员工疯了</a></td>
+                            <td align="center">2179484941</td>
+                            <td align="center">沈阳国美电器</td>
+                            <td align="center">2017-03-09 10:00:01</td>
+                            <td align="center">2017-03-10 09:59:59</td>
+                            <td align="center">195,077</td>
+                            <td align="center">在投</td>
+                            <!--<td align="center">2017-03-07 10:08:09</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2998">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=2998">修改</a>
+                                |
+                                                                                                                                    <a href="/admin/campaign/pause.html?campaign_id=2998">暂停</a>
+                                    |
+                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=2998';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2998">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2997</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=RPM0027363">RPM0027363</a></td>
+                            <!--<td align="center">伊利公共事务部奖励投放</td>-->
+                            <td align="center">伊利0307</td>
+                            <td align="center">客户端-热门话题榜-新</td>
+                            <td align="center"><a href="http://weibo.com/p/10080814abff0057e97069d45f90cccd4edefd" target="_blank">潘刚之问</a></td>
+                            <td align="center">5236823068</td>
+                            <td align="center">伊利</td>
+                            <td align="center">2017-03-07 10:00:01</td>
+                            <td align="center">2017-03-11 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">暂停</td>
+                            <!--<td align="center">2017-03-06 20:07:12</td>-->
+                            <!--<td align="center">2017-03-08 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2997">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=2997">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=2997">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=2997';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2997">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2996</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=RPM0027363">RPM0027363</a></td>
+                            <!--<td align="center">伊利公共事务部奖励投放</td>-->
+                            <td align="center">伊利0307</td>
+                            <td align="center">微博首页-热门话题榜-新</td>
+                            <td align="center"><a href="http://weibo.com/p/10080814abff0057e97069d45f90cccd4edefd" target="_blank">潘刚之问</a></td>
+                            <td align="center">5236823068</td>
+                            <td align="center">伊利</td>
+                            <td align="center">2017-03-07 10:00:01</td>
+                            <td align="center">2017-03-11 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">暂停</td>
+                            <!--<td align="center">2017-03-06 20:06:24</td>-->
+                            <!--<td align="center">2017-03-08 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2996">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=2996">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=2996">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=2996';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2996">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2995</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=TBJS17030002">TBJS17030002</a></td>
+                            <!--<td align="center">江苏省电力公司2017年3月7日-3月9日品牌速递和双端话题定向文字链微博资源合作协议（硬广）</td>-->
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center">微博首页-分省市话题</td>
+                            <td align="center"><a href="http://weibo.com/p/1008087517c721c1b039c63277ebe4f34f56e3" target="_blank">激光炮怒怼高压线</a></td>
+                            <td align="center">2113535642</td>
+                            <td align="center">国网江苏电力</td>
+                            <td align="center">2017-03-07 10:00:01</td>
+                            <td align="center">2017-03-08 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">终止</td>
+                            <!--<td align="center">2017-03-06 16:51:00</td>-->
+                            <!--<td align="center">2017-03-08 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2995">查看</a>
+                                |
+                                                                                                                                                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2995">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2994</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17010773">WB17010773</a></td>
+                            <!--<td align="center">碧欧泉 江疏影 17年 微博标准合同</td>-->
+                            <td align="center">华东-碧欧泉-0309</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/100808c3cf26162a3feefdeed2a5f088189b1d" target="_blank">江疏影的晨间肌密</a></td>
+                            <td align="center">1745068231</td>
+                            <td align="center">碧欧泉Biotherm</td>
+                            <td align="center">2017-03-09 10:00:01</td>
+                            <td align="center">2017-03-10 09:59:59</td>
+                            <td align="center">1,894,545</td>
+                            <td align="center">在投</td>
+                            <!--<td align="center">2017-03-06 16:42:40</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2994">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=2994">修改</a>
+                                |
+                                                                                                                                    <a href="/admin/campaign/pause.html?campaign_id=2994">暂停</a>
+                                    |
+                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=2994';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2994">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2993</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=RPM0027629">RPM0027629</a></td>
+                            <!--<td align="center">阿里妈妈——17年3月天猫女王节常规资源1</td>-->
+                            <td align="center">天猫-0306-1</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/1008083e9f48dc222ad68dc2db4d5419712e3e" target="_blank">3.8女王节</a></td>
+                            <td align="center">1768198384</td>
+                            <td align="center">天猫</td>
+                            <td align="center">2017-03-06 10:00:01</td>
+                            <td align="center">2017-03-09 09:59:59</td>
+                            <td align="center">476,349</td>
+                            <td align="center">终止</td>
+                            <!--<td align="center">2017-03-05 12:21:18</td>-->
+                            <!--<td align="center">2017-03-09 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2993">查看</a>
+                                |
+                                                                                                                                                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2993">日志</a>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td align="center">2992</td>
+                            <td align="center"><a href="/admin/contract/search.html?contract_no=WB17010321">WB17010321</a></td>
+                            <!--<td align="center">腾信-伊利公共事务部-2-3月</td>-->
+                            <td align="center">伊利0306</td>
+                            <td align="center">微博首页-推荐话题-新</td>
+                            <td align="center"><a href="http://weibo.com/p/10080814abff0057e97069d45f90cccd4edefd/talk_home" target="_blank">潘刚之问</a></td>
+                            <td align="center">5236823068</td>
+                            <td align="center">伊利</td>
+                            <td align="center">2017-03-06 10:00:01</td>
+                            <td align="center">2017-03-22 09:59:59</td>
+                            <td align="center">0</td>
+                            <td align="center">暂停</td>
+                            <!--<td align="center">2017-03-04 22:39:48</td>-->
+                            <!--<td align="center">2017-03-07 10:00:01</td>-->
+                            <td align="center">
+                                <a href="/admin/campaign/view.html?campaign_id=2992">查看</a>
+                                |
+                                                                                                <a href="/admin/campaign/edit.html?campaign_id=2992">修改</a>
+                                |
+                                                                                                    <a href="/admin/campaign/start.html?campaign_id=2992">启动</a>
+                                    |
+                                                                                                                                <a href="javascript:if(confirm('确定要终止计划吗?')){window.location.href='/admin/campaign/stop.html?campaign_id=2992';}">终止</a>
+                                |
+                                                                <a href="/admin/log/search_by_campaign.html?campaign_id=2992">日志</a>
+                            </td>
+                        </tr>
+                                                    </tbody>
+            </table>
+                        <div class="pager"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var PCDN = "http://e.sinajs.cn/p/";
+    var BPCDN = "http://e.sinajs.cn/bp/";
+    var CDN = "http://e.sinajs.cn/mcpm/";
+</script>
+<script type="text/javascript" src="http://e.sinajs.cn/p/scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="http://e.sinajs.cn/p/scripts/jquery-ui-1.9.1.js"></script>
+<script type="text/javascript" src="http://e.sinajs.cn/bp/js/common.js"></script>
+<script type="text/javascript">
+    hushc.data.pagination = {
+        'total': '2970',
+        'page': '1',
+        'pageSize': 15    };
+    hushc.data.dateRange = {
+        'startTime': '',
+        'endTime': ''
+    };
+</script>
+<script type="text/javascript" src="http://e.sinajs.cn/mcpm/js/pages/admin/order/index.js"></script>
+</body>
+</html>

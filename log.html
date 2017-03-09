@@ -1,0 +1,392 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://e.sinajs.cn/p/styles/jquery-ui-1.9.1.css" />
+    <link rel="stylesheet" href="http://e.sinajs.cn/bp/css/admin.css" />
+    <link rel="stylesheet" href="http://e.sinajs.cn/mcpm/css/pages/admin/order/index.css">
+    <title>CPD运营管理系统</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header clearfix">
+        <div class="logo">
+            <a href="/admin/"><img src="http://e.sinajs.cn/bp/images/admin_logo.png" alt="CPD运营管理系统"> </a>
+        </div>
+        <ul class="nav nav-top clearfix">
+            <!--<li>今日投放计划<em class="green">0</em></li>-->
+            <li class="first">【微博】刘莎</li>
+            <li><a style="color: #0F548D" href="http://weibo.com/logout.php?backurl=%2F">退出系统</a></li>
+        </ul>
+    </div>
+    <ul class="nav nav-main clearfix">
+        <li><a href="/admin/">首页</a></li>
+        <li class="active"><a href="/admin/campaign/index.html">CPD广告管理</a></li>
+    </ul>
+    <ul class="nav nav-sub clearfix">
+        <li><a href="/admin/campaign/index.html">广告计划管理</a><span class="arrow"></span></li>
+        <li><a href="/admin/contract/index.html">广告合同管理</a><span class="arrow"></span></li>
+        <!--<li><a href="/admin/template/index.html">广告模板管理</a><span class="arrow"></span></li>-->
+        <li class="active"><a href="/admin/log/index.html">广告日志查询</a><span class="arrow"></span></li>
+    </ul>
+    <div class="main">
+        <form method="get" action="/admin/log/search.html" target="_self" id="search_form">
+            <fieldset>
+                <legend>查询</legend>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>日志时间：</th>
+                        <td colspan="3">
+                                                        <span class="dateRange"></span>
+                        </td>
+                        <td><input class="btn btn-7" type="submit" value="查询"><input class="btn btn-7" type="button" value="清空" onclick="window.location.href='/admin/log/index.html'"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+        <div class="list">
+            <table>
+                <thead>
+                <tr>
+                    <th>日志时间</th>
+                    <th>操作IP</th>
+                    <th>操作结果</th>
+                    <th>详细内容</th>
+                </tr>
+                </thead>
+                <tbody>
+                                                            <tr>
+                            <td align="center" width="150">2017-03-09 15:49:11</td>
+                            <td align="center" width="150">10.238.51.13</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][齐烁【微博】][2058480420]对[计划][3006]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 15:47:52</td>
+                            <td align="center" width="150">10.238.51.13</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][齐烁【微博】][2058480420]对[计划][3005]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 15:45:39</td>
+                            <td align="center" width="150">10.238.51.13</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][齐烁【微博】][2058480420]对[计划][3004]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 15:44:11</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][WB16121019]进行[更新可创建计划数]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 15:44:11</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][WB16121019]进行[修改合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 14:42:21</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][WB17030300]进行[创建合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 12:57:04</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][WB17030005]进行[修改合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3002]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3001]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3000]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2998]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2994]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2960]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2959]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2958]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2960]进行[暂停计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2959]进行[暂停计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2958]进行[暂停计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][WB17030178]进行[结束合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2999]进行[终止计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][RPM0027586]进行[结束合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2993]进行[终止计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][WB17030107]进行[结束合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2991]进行[终止计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][RPM0027629]进行[结束合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[合同][WB17020637]进行[结束合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2990]进行[终止计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3002]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3001]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][3000]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2998]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2994]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2960]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2959]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-09 09:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2958]进行[更新计划状态]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 18:49:46</td>
+                            <td align="center" width="150">10.238.53.121</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][段保玲【微博】][5367009093]对[计划][3003]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 17:21:51</td>
+                            <td align="center" width="150">10.238.54.73</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][周舸【微博】][2736311271]对[计划][3002]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 13:51:25</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][SHH17030005]进行[创建合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 12:04:00</td>
+                            <td align="center" width="150">10.238.53.11</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[用户][齐烁【微博】][2058480420]对[计划][3001]进行[创建计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 11:40:31</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][WB17020617-002]进行[创建合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:57:52</td>
+                            <td align="center" width="150">192.168.145.139</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[CRM]对[合同][WB17030005]进行[创建合同]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2999]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2993]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2991]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2990]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2960]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2959]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2958]进行[启动计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2997]进行[暂停计划]操作</td>
+                        </tr>
+                                            <tr>
+                            <td align="center" width="150">2017-03-08 10:00:01</td>
+                            <td align="center" width="150">10.75.26.128</td>
+                            <td align="center" width="150">操作成功</td>
+                            <td align="left">[系统]对[计划][2996]进行[暂停计划]操作</td>
+                        </tr>
+                                                    </tbody>
+            </table>
+            <div class="pager"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var PCDN = "http://e.sinajs.cn/p/";
+    var BPCDN = "http://e.sinajs.cn/bp/";
+    var CDN = "http://e.sinajs.cn/mcpm/";
+</script>
+<script type="text/javascript" src="http://e.sinajs.cn/p/scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="http://e.sinajs.cn/p/scripts/jquery-ui-1.9.1.js"></script>
+<script type="text/javascript" src="http://e.sinajs.cn/bp/js/common.js"></script>
+<script type="text/javascript">
+    hushc.data.pagination = {
+        'total': '22626',
+        'page': '1',
+        'pageSize': 50    };
+    hushc.data.dateRange = {
+        'startTime': '',
+        'endTime': ''
+    };
+    function justquery() {
+        $("#search_form").attr('target', '_self');
+        $("#search_form").attr('action', '/admin/log/index.html');
+        return true;
+    };
+</script>
+<script type="text/javascript" src="http://e.sinajs.cn/mcpm/js/pages/admin/order/index.js"></script>
+</body>
+</html>
